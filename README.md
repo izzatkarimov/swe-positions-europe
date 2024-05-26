@@ -2,6 +2,6 @@
 
 | Job Title | Job Type | Country | Link to Application |
 | --- | --- | --- | --- |
-| LeetCode | `Full-Time`| `Remote`| [Link](#) |
-| NeetCode| `Full-Time` | `Remote`| [Link](#) |
-| TopSWE | `Internship` | `Remote`| [Link](#) |
+| Google | `Full-Time`| `Remote`| [Link](#) |
+| Neflix | `Full-Time` | `Remote`| [Link](#) |
+| Amazon | `Internship` | `Remote`| [Link](#) |

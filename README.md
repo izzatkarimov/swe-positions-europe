@@ -5,3 +5,4 @@
 | Google | `Full-Time`| `Remote`| [Link](#) |
 | Neflix | `Full-Time` | `Remote`| [Link](#) |
 | Amazon | `Internship` | `Remote`| [Link](#) |
+| Meta| `Internshi[` | `London, UK` | [Link](#) |

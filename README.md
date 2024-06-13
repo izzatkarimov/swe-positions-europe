@@ -1,5 +1,7 @@
 # Software Engineer Job Openings in Europe
 
+![LeetCode Github (1)](https://github.com/izzatkarimov/EU-Swe-Jobs/assets/108251704/0db6fd40-20d3-4a4f-9c17-2306dd33ae16)
+
 This repository is a curated list of the job openings in the EU area. This list is constantly updated with the latest job openings.
 
 ## Full-Time Jobs

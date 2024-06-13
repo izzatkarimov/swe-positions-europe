@@ -1,14 +1,12 @@
 # Software Engineer Job Openings in Europe
 
-----
-
 <div align="left">
 
-| Job Title | Job Type | Country | Link to Application |
+| Job Title | Type of Employment | Work Mode | Location | Link to Application |
 | --- | --- | --- | --- |
-| Google | `Full-Time`| `Remote`| [Link](#) |
-| Neflix | `Full-Time` | `Remote`| [Link](#) |
-| Amazon | `Internship` | `Remote`| [Link](#) |
-| Meta| `Internship` | `London, UK` | [Link](#) |
+| Google | `Full-Time`| `Remote`| Warsaw, Poland | [Link](#) |
+| Neflix | `Full-Time` | `Remote`| Warsaw, Poland | [Link](#) |
+| Amazon | `Internship` | `Remote`| Warsaw, Poland | [Link](#) |
+| Meta| `Internship` | `London, UK` | Warsaw, Poland | [Link](#) |
 
 </div>

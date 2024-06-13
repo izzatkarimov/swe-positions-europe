@@ -1,5 +1,7 @@
 # Software Engineer Job Openings in Europe
 
+This repository is a curated list of the job openings in the EU area. This list is constantly updated with the latest job openings.
+
 ## Full-Time Jobs
 
 <div align="left">

@@ -10,8 +10,8 @@ This repository is a curated list of the job openings in the EU area. This list 
 | --- | --- | --- | --- | --- |
 | Google | `Full-Time`| `Remote`| Warsaw, Poland | [Link](#) |
 | Neflix | `Full-Time` | `Remote`| Warsaw, Poland | [Link](#) |
-| Amazon | `Internship` | `Remote`| Warsaw, Poland | [Link](#) |
-| Meta| `Internship` | `Hybrid` | Warsaw, Poland | [Link](#) |
+| Amazon | `Full-Time` | `Remote`| Warsaw, Poland | [Link](#) |
+| Meta| `Full-Time` | `Hybrid` | Warsaw, Poland | [Link](#) |
 
 </div>
 
@@ -21,8 +21,8 @@ This repository is a curated list of the job openings in the EU area. This list 
 
 | Job Title | Type of Employment | Work Mode | Location | Link to Application |
 | --- | --- | --- | --- | --- |
-| Google | `Full-Time`| `Remote`| Warsaw, Poland | [Link](#) |
-| Neflix | `Full-Time` | `Remote`| Warsaw, Poland | [Link](#) |
+| Google | `Internship`| `Remote`| Warsaw, Poland | [Link](#) |
+| Neflix | `Internship` | `Remote`| Warsaw, Poland | [Link](#) |
 | Amazon | `Internship` | `Remote`| Warsaw, Poland | [Link](#) |
 | Meta| `Internship` | `Hybrid` | Warsaw, Poland | [Link](#) |
 

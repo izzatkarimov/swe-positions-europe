@@ -1,6 +1,6 @@
 # Software Engineer Job Openings in Europe
 
-# Full-Time Job Offers
+## Full-Time Jobs
 
 <div align="left">
 
@@ -13,7 +13,7 @@
 
 </div>
 
-# Internships
+## Internships
 
 <div align="left">
 

@@ -1,6 +1,8 @@
 # Software Engineer Job Openings in Europe
 
-<div align="center">
+----
+
+<div align="left">
 
 | Job Title | Job Type | Country | Link to Application |
 | --- | --- | --- | --- |

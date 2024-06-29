@@ -4,7 +4,7 @@
 
 This is a list of active full-time and internship Welcome to the repository for active full-time and internship software engineering job openings in Europe. This repository aims to provide a comprehensive and up-to-date list of opportunities for software engineers looking to work in Europe. Whether you are a seasoned professional or a student seeking an internship, you can find relevant opportunities here.
 
-### Full-Time Jobs
+### 💼 Full-Time Jobs
 
 <div align="left">
 
@@ -17,7 +17,7 @@ This is a list of active full-time and internship Welcome to the repository for 
 
 </div>
 
-### Internships
+### 🚀 Internships
 
 <div align="left">
 
@@ -30,4 +30,4 @@ This is a list of active full-time and internship Welcome to the repository for 
 
 </div>
 
-[Back to Top](#software-engineer-job-openings-in-europe)
+⬆️ [Back to Top](#software-engineer-job-openings-in-europe)

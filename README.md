@@ -8,12 +8,12 @@ This repository is a curated list of the job openings in the EU area. This list 
 
 <div align="left">
 
-| Job Title | Type of Employment | Work Mode | Location | Link to Application |
-| --- | --- | --- | --- | --- |
-| Google | `Full-Time`| `Remote`| Warsaw, Poland | [Link](#) |
-| Neflix | `Full-Time` | `Remote`| Warsaw, Poland | [Link](#) |
-| Amazon | `Full-Time` | `Remote`| Warsaw, Poland | [Link](#) |
-| Meta| `Full-Time` | `Hybrid` | Warsaw, Poland | [Link](#) |
+| Job Title | Role | Type of Employment | Work Mode | Location | Link to Application |
+| --- | --- | --- | --- | --- | --- |
+| Google | Software Engineer | `Full-Time`| `Remote`| Warsaw, Poland | [Link](#) |
+| Neflix | Software Engineer | `Full-Time` | `Remote`| Warsaw, Poland | [Link](#) |
+| Amazon | Software Engineer | `Full-Time` | `Remote`| Warsaw, Poland | [Link](#) |
+| Meta| Software Engineer | `Full-Time` | `Hybrid` | Warsaw, Poland | [Link](#) |
 
 </div>
 
@@ -21,11 +21,11 @@ This repository is a curated list of the job openings in the EU area. This list 
 
 <div align="left">
 
-| Job Title | Type of Employment | Work Mode | Location | Link to Application |
-| --- | --- | --- | --- | --- |
-| Google | `Internship`| `Remote`| Warsaw, Poland | [Link](#) |
-| Neflix | `Internship` | `Remote`| Warsaw, Poland | [Link](#) |
-| Amazon | `Internship` | `Remote`| Warsaw, Poland | [Link](#) |
-| Meta| `Internship` | `Hybrid` | Warsaw, Poland | [Link](#) |
+| Job Title | Role | Type of Employment | Work Mode | Location | Link to Application |
+| --- | --- | --- | --- | --- | --- |
+| Google | Software Engineer | `Internship`| `Remote`| Warsaw, Poland | [Link](#) |
+| Neflix | Software Engineer | `Internship` | `Remote`| Warsaw, Poland | [Link](#) |
+| Amazon | Software Engineer | `Internship` | `Remote`| Warsaw, Poland | [Link](#) |
+| Meta| Software Engineer | `Internship` | `Hybrid` | Warsaw, Poland | [Link](#) |
 
 </div>

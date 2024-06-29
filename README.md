@@ -8,7 +8,7 @@ This is a list of active full-time and internship Welcome to the repository for 
 
 <div align="left">
 
-| Job Title | Role | Type of Employment | Work Mode | Location | Link to Application |
+| Company | Role | Type of Employment | Work Mode | Location | Link to Application |
 | --- | --- | --- | --- | --- | --- |
 | Google | Software Engineer | `Full-Time`| `Remote`| Warsaw, Poland | [Link](#) |
 | Neflix | Software Engineer | `Full-Time` | `Remote`| Warsaw, Poland | [Link](#) |
@@ -21,7 +21,7 @@ This is a list of active full-time and internship Welcome to the repository for 
 
 <div align="left">
 
-| Job Title | Role | Type of Employment | Work Mode | Location | Link to Application |
+| Company | Role | Type of Employment | Work Mode | Location | Link to Application |
 | --- | --- | --- | --- | --- | --- |
 | Google | Software Engineer | `Internship`| `Remote`| Warsaw, Poland | [Link](#) |
 | Neflix | Software Engineer | `Internship` | `Remote`| Warsaw, Poland | [Link](#) |

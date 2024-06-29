@@ -34,4 +34,4 @@ This is a list of active full-time and internship Welcome to the repository for 
 This repository is licensed under the MIT License. 
 See the LICENSE file for more information.
 
-[MIT](https://choosealicense.com/licenses/mit/)
+[MIT](https://github.com/izzatkarimov/EU-SWE-Jobs?tab=MIT-1-ov-file)

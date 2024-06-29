@@ -8,12 +8,12 @@ This is a list of active full-time and internship Welcome to the repository for 
 
 <div align="left">
 
-| Company | Role | Type of Employment | Work Mode | Location | Link to Application |
-| --- | --- | --- | --- | --- | --- |
-| Google | Software Engineer | `Full-Time`| `Remote`| Warsaw, Poland | [Link](#) |
-| Neflix | Software Engineer | `Full-Time` | `Remote`| Warsaw, Poland | [Link](#) |
-| Amazon | Software Engineer | `Full-Time` | `Remote`| Warsaw, Poland | [Link](#) |
-| Meta| Software Engineer | `Full-Time` | `Hybrid` | Warsaw, Poland | [Link](#) |
+| Company | Role | Work Mode | Location | Link to Application |
+| --- | --- | --- | --- | --- |
+| Google | Software Engineer | `Remote`| Warsaw, Poland | [Link](#) |
+| Neflix | Software Engineer | `Remote`| Warsaw, Poland | [Link](#) |
+| Amazon | Software Engineer | `Remote`| Warsaw, Poland | [Link](#) |
+| Meta| Software Engineer | `Hybrid` | Warsaw, Poland | [Link](#) |
 
 </div>
 
@@ -21,12 +21,12 @@ This is a list of active full-time and internship Welcome to the repository for 
 
 <div align="left">
 
-| Company | Role | Type of Employment | Work Mode | Location | Link to Application |
-| --- | --- | --- | --- | --- | --- |
-| Google | Software Engineer | `Internship`| `Remote`| Warsaw, Poland | [Link](#) |
-| Neflix | Software Engineer | `Internship` | `Remote`| Warsaw, Poland | [Link](#) |
-| Amazon | Software Engineer | `Internship` | `Remote`| Warsaw, Poland | [Link](#) |
-| Meta| Software Engineer | `Internship` | `Hybrid` | Warsaw, Poland | [Link](#) |
+| Company | Role | Work Mode | Location | Link to Application |
+| --- | --- | --- | --- | --- |
+| Google | Software Engineer | `Remote`| Warsaw, Poland | [Link](#) |
+| Neflix | Software Engineer | `Remote`| Warsaw, Poland | [Link](#) |
+| Amazon | Software Engineer | `Remote`| Warsaw, Poland | [Link](#) |
+| Meta| Software Engineer | `Hybrid` | Warsaw, Poland | [Link](#) |
 
 </div>
 

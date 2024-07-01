@@ -10,7 +10,7 @@ This is a list of active full-time and internship Welcome to the repository for 
 
 | Company | Role | Work Mode | Location | Link to Application |
 | --- | --- | --- | --- | --- |
-| Google | Software Engineer | `Remote`| Warsaw, Poland | [Link](#) |
+| Visa | Software Engineer | `On-site`| Warsaw, Poland | [Link](https://jobs.smartrecruiters.com/Visa/743999993422697-software-engineer?source=LinkedIn) |
 | Neflix | Software Engineer | `Remote`| Warsaw, Poland | [Link](#) |
 | Amazon | Software Engineer | `Remote`| Warsaw, Poland | [Link](#) |
 | Meta| Software Engineer | `Hybrid` | Warsaw, Poland | [Link](#) |

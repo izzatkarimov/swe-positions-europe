@@ -11,9 +11,9 @@ This is a list of active full-time and internship Welcome to the repository for 
 | Company | Role | Work Mode | Location | Link to Application |
 | --- | --- | --- | --- | --- |
 | Visa | Software Engineer | `On-site`| Warsaw, Poland | [Link](https://jobs.smartrecruiters.com/Visa/743999993422697-software-engineer?source=LinkedIn) |
-| Neflix | Software Engineer | `Remote`| Warsaw, Poland | [Link](#) |
-| Amazon | Software Engineer | `Remote`| Warsaw, Poland | [Link](#) |
-| Meta| Software Engineer | `Hybrid` | Warsaw, Poland | [Link](#) |
+| Affirm | Sr. Software Engineer (DevOps) | `Remote`| Warsaw, Poland | [Link](https://boards.greenhouse.io/affirm/jobs/5847096003) |
+| Affirm | Sr. Software Engineer (Backend) | `Remote`| Warsaw, Poland | [Link](https://boards.greenhouse.io/affirm/jobs/5918040003) |
+| Affirm | Software Engineer II | `Remote` | Warsaw, Poland | [Link](https://boards.greenhouse.io/affirm/jobs/6023043003) |
 
 </div>
 

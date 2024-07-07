@@ -24,7 +24,7 @@ This is a list of active full-time and internship Welcome to the repository for 
 | Company | Role | Work Mode | Location | Link to Application |
 | --- | --- | --- | --- | --- |
 | Circle K | Software Development Intern | `On-site`| Warsaw, Poland | [Link](https://workwithus.circlek.com/pl/pl/job/CIKCGLOBALR439527EXTERNALPLPL/Software-Development-Intern?utm_source=linkedin&utm_medium=phenom-feeds) |
-| Neflix | Software Engineer | `Remote`| Warsaw, Poland | [Link](#) |
+| EY | Junior Python Developer | `On-site`| Warsaw, Poland | [Link](https://careers.ey.com/ey/job/Wroc%C5%82aw-EY-GDS-Internship-Program-Junior-Python-Developer-%28September-October-2024%29-DS-50-086/1089962101/?feedId=353401&utm_source=LinkedInJobPostings&utm_campaign=j2w_linkedin) |
 | Amazon | Software Engineer | `Remote`| Warsaw, Poland | [Link](#) |
 | Meta| Software Engineer | `Hybrid` | Warsaw, Poland | [Link](#) |
 

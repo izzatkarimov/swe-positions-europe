@@ -23,7 +23,7 @@ This is a list of active full-time and internship Welcome to the repository for 
 
 | Company | Role | Work Mode | Location | Link to Application |
 | --- | --- | --- | --- | --- |
-| Google | Software Engineer | `Remote`| Warsaw, Poland | [Link](#) |
+| Circle K | Software Development Intern | `On-site`| Warsaw, Poland | [Link](https://workwithus.circlek.com/pl/pl/job/CIKCGLOBALR439527EXTERNALPLPL/Software-Development-Intern?utm_source=linkedin&utm_medium=phenom-feeds) |
 | Neflix | Software Engineer | `Remote`| Warsaw, Poland | [Link](#) |
 | Amazon | Software Engineer | `Remote`| Warsaw, Poland | [Link](#) |
 | Meta| Software Engineer | `Hybrid` | Warsaw, Poland | [Link](#) |

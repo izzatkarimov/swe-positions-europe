@@ -279,30 +279,80 @@ class JobScraper:
         else:
             return default
     
-    def format_markdown_tables(self):
-        """Format the collected job data into markdown tables"""
-        # Create dataframes
-        if self.jobs_data:
-            jobs_df = pd.DataFrame(self.jobs_data)
-            jobs_df = jobs_df.drop_duplicates(subset=['company', 'role', 'location']).reset_index(drop=True)
-        else:
-            jobs_df = pd.DataFrame(columns=['company', 'role', 'work_mode', 'location', 'link'])
+def format_markdown_tables(self):
+    """Format the collected job data into markdown tables"""
+    # Get current date in YYYY-MM format
+    current_date = datetime.datetime.now().strftime("%Y-%m")
+    
+    # Create dataframes
+    if self.jobs_data:
+        # Add current date to all entries
+        for job in self.jobs_data:
+            job['last_updated'] = current_date
+            
+        jobs_df = pd.DataFrame(self.jobs_data)
+        jobs_df = jobs_df.drop_duplicates(subset=['company', 'role', 'location']).reset_index(drop=True)
         
-        if self.internships_data:
-            internships_df = pd.DataFrame(self.internships_data)
-            internships_df = internships_df.drop_duplicates(subset=['company', 'role', 'location']).reset_index(drop=True)
-        else:
-            internships_df = pd.DataFrame(columns=['company', 'role', 'work_mode', 'location', 'link'])
+        # Rename columns to match README format
+        jobs_df = jobs_df.rename(columns={
+            'company': 'Company',
+            'role': 'Role',
+            'work_mode': 'Work Mode',
+            'location': 'Location',
+            'link': 'Link to Application',
+            'last_updated': 'Last Updated'
+        })
         
-        # Format work_mode column with backticks
-        jobs_df['work_mode'] = jobs_df['work_mode'].apply(lambda x: f"`{x}`")
-        internships_df['work_mode'] = internships_df['work_mode'].apply(lambda x: f"`{x}`")
+        # Reorder columns
+        column_order = ['Company', 'Role', 'Work Mode', 'Location', 'Link to Application', 'Last Updated']
+        jobs_df = jobs_df[column_order]
+    else:
+        jobs_df = pd.DataFrame(columns=['Company', 'Role', 'Work Mode', 'Location', 'Link to Application', 'Last Updated'])
+    
+    if self.internships_data:
+        # Add current date to all entries
+        for job in self.internships_data:
+            job['last_updated'] = current_date
+            
+        internships_df = pd.DataFrame(self.internships_data)
+        internships_df = internships_df.drop_duplicates(subset=['company', 'role', 'location']).reset_index(drop=True)
         
-        # Format for markdown
-        jobs_md = jobs_df.to_markdown(index=False) if not jobs_df.empty else "No full-time jobs found"
-        internships_md = internships_df.to_markdown(index=False) if not internships_df.empty else "No internships found"
+        # Rename columns to match README format
+        internships_df = internships_df.rename(columns={
+            'company': 'Company',
+            'role': 'Role',
+            'work_mode': 'Work Mode',
+            'location': 'Location',
+            'link': 'Link to Application',
+            'last_updated': 'Last Updated'
+        })
         
-        return jobs_md, internships_md
+        # Add duration column for internships if not present
+        if 'Duration' not in internships_df.columns:
+            # Try to extract duration from role name or set to default
+            internships_df['Duration'] = internships_df['Role'].apply(
+                lambda x: 'Summer 2024' if any(term in x.lower() for term in ['summer', 'season']) else 'Ongoing'
+            )
+        
+        # Reorder columns
+        column_order = ['Company', 'Role', 'Work Mode', 'Location', 'Link to Application', 'Last Updated', 'Duration']
+        internships_df = internships_df[column_order]
+    else:
+        internships_df = pd.DataFrame(columns=['Company', 'Role', 'Work Mode', 'Location', 'Link to Application', 'Last Updated', 'Duration'])
+    
+    # Format work_mode column with backticks
+    jobs_df['Work Mode'] = jobs_df['Work Mode'].apply(lambda x: f"`{x}`")
+    internships_df['Work Mode'] = internships_df['Work Mode'].apply(lambda x: f"`{x}`")
+    
+    # Format link column to make it clickable in Markdown
+    jobs_df['Link to Application'] = jobs_df['Link to Application'].apply(lambda x: f"[Apply]({x})")
+    internships_df['Link to Application'] = internships_df['Link to Application'].apply(lambda x: f"[Apply]({x})")
+    
+    # Format for markdown
+    jobs_md = jobs_df.to_markdown(index=False) if not jobs_df.empty else "| No full-time jobs found |"
+    internships_md = internships_df.to_markdown(index=False) if not internships_df.empty else "| No internships found |"
+    
+    return jobs_md, internships_md
     
 def update_github_readme(self):
     """Update the GitHub repository README with the new job data"""

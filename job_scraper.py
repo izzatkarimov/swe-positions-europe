@@ -304,64 +304,86 @@ class JobScraper:
         
         return jobs_md, internships_md
     
-    def update_github_readme(self):
-        """Update the GitHub repository README with the new job data"""
-        try:
-            # Format the job data
-            jobs_md, internships_md = self.format_markdown_tables()
+def update_github_readme(self):
+    """Update the GitHub repository README with the new job data"""
+    try:
+        # Format the job data
+        jobs_md, internships_md = self.format_markdown_tables()
+        
+        # Connect to GitHub
+        g = Github(self.github_token)
+        repo = g.get_repo("izzatkarimov/EU-Swe-Jobs")
+        
+        # Get the existing README content
+        readme_content = repo.get_contents("README.md").decoded_content.decode('utf-8')
+        
+        # Check if we have new data to add
+        if self.jobs_data:
+            # Update the full-time jobs section - note the ## instead of ###
+            jobs_pattern = r'## 💼 Full-Time Jobs\s+\|.*?\|\s+(?:\|.*?\|\s+)*?(?=\n##|\Z)'
+            new_jobs_section = f'## 💼 Full-Time Jobs\n\n{jobs_md}\n'
             
-            # Connect to GitHub
-            g = Github(self.github_token)
-            repo = g.get_repo("izzatkarimov/EU-Swe-Jobs")
-            
-            # Get the existing README content
-            readme_content = repo.get_contents("README.md").decoded_content.decode('utf-8')
-            
-            # Update the full-time jobs section
-            jobs_pattern = r'### 💼 Full-Time Jobs\s+<div align="left">\s+\|.*?\|\s+(?:\|.*?\|\s+)*?</div>'
-            new_jobs_section = f'### 💼 Full-Time Jobs\n\n<div align="left">\n\n{jobs_md}\n\n</div>'
-            readme_content = re.sub(jobs_pattern, new_jobs_section, readme_content, flags=re.DOTALL)
-            
-            # Update the internships section
-            internships_pattern = r'### 🚀 Internships\s+<div align="left">\s+\|.*?\|\s+(?:\|.*?\|\s+)*?</div>'
-            new_internships_section = f'### 🚀 Internships\n\n<div align="left">\n\n{internships_md}\n\n</div>'
-            readme_content = re.sub(internships_pattern, new_internships_section, readme_content, flags=re.DOTALL)
-            
-            # Add update timestamp
-            update_time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-            if "Last Updated:" in readme_content:
-                readme_content = re.sub(r'Last Updated:.*', f'Last Updated: {update_time}', readme_content)
+            if re.search(jobs_pattern, readme_content, flags=re.DOTALL):
+                readme_content = re.sub(jobs_pattern, new_jobs_section, readme_content, flags=re.DOTALL)
             else:
-                readme_content = readme_content.replace("# Software Engineer Job Openings in Europe", 
-                                                       f"# Software Engineer Job Openings in Europe\n\nLast Updated: {update_time}")
+                logger.warning("Could not find full-time jobs section in README")
+        else:
+            logger.info("No new full-time jobs to add")
+        
+        # Check if we have new internship data
+        if self.internships_data:
+            # Update the internships section - note the ## instead of ###
+            internships_pattern = r'## 🚀 Internships\s+\|.*?\|\s+(?:\|.*?\|\s+)*?(?=\n##|\Z)'
+            new_internships_section = f'## 🚀 Internships\n\n{internships_md}\n'
             
-            # Update the README in the repository
-            repo.update_file(
-                "README.md",
-                f"Update job listings - {update_time}",
-                readme_content,
-                repo.get_contents("README.md").sha
-            )
-            
-            logger.info(f"Successfully updated GitHub README at {update_time}")
-            
-            # Generate a detailed report
-            report = {
-                "update_time": update_time,
-                "total_full_time_jobs": len(self.jobs_data),
-                "total_internships": len(self.internships_data),
-                "sources": {
-                    "LinkedIn": len([j for j in self.jobs_data + self.internships_data if j["source"] == "LinkedIn"]),
-                    "Indeed": len([j for j in self.jobs_data + self.internships_data if j["source"] == "Indeed"]),
-                    "Glassdoor": len([j for j in self.jobs_data + self.internships_data if j["source"] == "Glassdoor"])
-                }
+            if re.search(internships_pattern, readme_content, flags=re.DOTALL):
+                readme_content = re.sub(internships_pattern, new_internships_section, readme_content, flags=re.DOTALL)
+            else:
+                logger.warning("Could not find internships section in README")
+        else:
+            logger.info("No new internships to add")
+        
+        # If we have no data at all, don't update the README
+        if not self.jobs_data and not self.internships_data:
+            logger.warning("No jobs or internships found. Skipping README update.")
+            return {"status": "skipped", "reason": "No data found"}
+        
+        # Add update timestamp
+        update_time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        if "Last Updated:" in readme_content:
+            readme_content = re.sub(r'Last Updated:.*', f'Last Updated: {update_time}', readme_content)
+        else:
+            readme_content = readme_content.replace("# Software Engineer Job Openings in Europe", 
+                                                   f"# Software Engineer Job Openings in Europe\n\nLast Updated: {update_time}")
+        
+        # Update the README in the repository
+        repo.update_file(
+            "README.md",
+            f"Update job listings - {update_time}",
+            readme_content,
+            repo.get_contents("README.md").sha
+        )
+        
+        logger.info(f"Successfully updated GitHub README at {update_time}")
+        
+        # Generate a detailed report
+        report = {
+            "status": "success",
+            "update_time": update_time,
+            "total_full_time_jobs": len(self.jobs_data),
+            "total_internships": len(self.internships_data),
+            "sources": {
+                "LinkedIn": len([j for j in self.jobs_data + self.internships_data if j["source"] == "LinkedIn"]),
+                "Indeed": len([j for j in self.jobs_data + self.internships_data if j["source"] == "Indeed"]),
+                "Glassdoor": len([j for j in self.jobs_data + self.internships_data if j["source"] == "Glassdoor"])
             }
-            
-            return report
-            
-        except Exception as e:
-            logger.error(f"Error updating GitHub repository: {str(e)}")
-            return None
+        }
+        
+        return report
+        
+    except Exception as e:
+        logger.error(f"Error updating GitHub repository: {str(e)}")
+        return {"status": "error", "message": str(e)}
     
     def close(self):
         """Close the Selenium driver"""

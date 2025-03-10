@@ -35,3 +35,10 @@ jobs:
           name: archive-logs
           path: archive_job.log
           retention-days: 7
+
+      - name: Upload log file as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: archive-logs
+          path: archive_job.log
+          retention-days: 7

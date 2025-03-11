@@ -279,162 +279,162 @@ class JobScraper:
         else:
             return default
     
-def format_markdown_tables(self):
-    """Format the collected job data into markdown tables"""
-    # Get current date in YYYY-MM format
-    current_date = datetime.datetime.now().strftime("%Y-%m")
-    
-    # Create dataframes
-    if self.jobs_data:
-        # Add current date to all entries
-        for job in self.jobs_data:
-            job['last_updated'] = current_date
-            
-        jobs_df = pd.DataFrame(self.jobs_data)
-        jobs_df = jobs_df.drop_duplicates(subset=['company', 'role', 'location']).reset_index(drop=True)
+    def format_markdown_tables(self):
+        """Format the collected job data into markdown tables"""
+        # Get current date in YYYY-MM format
+        current_date = datetime.datetime.now().strftime("%Y-%m")
         
-        # Rename columns to match README format
-        jobs_df = jobs_df.rename(columns={
-            'company': 'Company',
-            'role': 'Role',
-            'work_mode': 'Work Mode',
-            'location': 'Location',
-            'link': 'Link to Application',
-            'last_updated': 'Last Updated'
-        })
-        
-        # Reorder columns
-        column_order = ['Company', 'Role', 'Work Mode', 'Location', 'Link to Application', 'Last Updated']
-        jobs_df = jobs_df[column_order]
-    else:
-        jobs_df = pd.DataFrame(columns=['Company', 'Role', 'Work Mode', 'Location', 'Link to Application', 'Last Updated'])
-    
-    if self.internships_data:
-        # Add current date to all entries
-        for job in self.internships_data:
-            job['last_updated'] = current_date
-            
-        internships_df = pd.DataFrame(self.internships_data)
-        internships_df = internships_df.drop_duplicates(subset=['company', 'role', 'location']).reset_index(drop=True)
-        
-        # Rename columns to match README format
-        internships_df = internships_df.rename(columns={
-            'company': 'Company',
-            'role': 'Role',
-            'work_mode': 'Work Mode',
-            'location': 'Location',
-            'link': 'Link to Application',
-            'last_updated': 'Last Updated'
-        })
-        
-        # Add duration column for internships if not present
-        if 'Duration' not in internships_df.columns:
-            # Try to extract duration from role name or set to default
-            internships_df['Duration'] = internships_df['Role'].apply(
-                lambda x: 'Summer 2024' if any(term in x.lower() for term in ['summer', 'season']) else 'Ongoing'
-            )
-        
-        # Reorder columns
-        column_order = ['Company', 'Role', 'Work Mode', 'Location', 'Link to Application', 'Last Updated', 'Duration']
-        internships_df = internships_df[column_order]
-    else:
-        internships_df = pd.DataFrame(columns=['Company', 'Role', 'Work Mode', 'Location', 'Link to Application', 'Last Updated', 'Duration'])
-    
-    # Format work_mode column with backticks
-    jobs_df['Work Mode'] = jobs_df['Work Mode'].apply(lambda x: f"`{x}`")
-    internships_df['Work Mode'] = internships_df['Work Mode'].apply(lambda x: f"`{x}`")
-    
-    # Format link column to make it clickable in Markdown
-    jobs_df['Link to Application'] = jobs_df['Link to Application'].apply(lambda x: f"[Apply]({x})")
-    internships_df['Link to Application'] = internships_df['Link to Application'].apply(lambda x: f"[Apply]({x})")
-    
-    # Format for markdown
-    jobs_md = jobs_df.to_markdown(index=False) if not jobs_df.empty else "| No full-time jobs found |"
-    internships_md = internships_df.to_markdown(index=False) if not internships_df.empty else "| No internships found |"
-    
-    return jobs_md, internships_md
-    
-def update_github_readme(self):
-    """Update the GitHub repository README with the new job data"""
-    try:
-        # Format the job data
-        jobs_md, internships_md = self.format_markdown_tables()
-        
-        # Connect to GitHub
-        g = Github(self.github_token)
-        repo = g.get_repo("izzatkarimov/EU-Swe-Jobs")
-        
-        # Get the existing README content
-        readme_content = repo.get_contents("README.md").decoded_content.decode('utf-8')
-        
-        # Check if we have new data to add
+        # Create dataframes
         if self.jobs_data:
-            # Update the full-time jobs section - note the ## instead of ###
-            jobs_pattern = r'## 💼 Full-Time Jobs\s+\|.*?\|\s+(?:\|.*?\|\s+)*?(?=\n##|\Z)'
-            new_jobs_section = f'## 💼 Full-Time Jobs\n\n{jobs_md}\n'
+            # Add current date to all entries
+            for job in self.jobs_data:
+                job['last_updated'] = current_date
             
-            if re.search(jobs_pattern, readme_content, flags=re.DOTALL):
-                readme_content = re.sub(jobs_pattern, new_jobs_section, readme_content, flags=re.DOTALL)
-            else:
-                logger.warning("Could not find full-time jobs section in README")
+            jobs_df = pd.DataFrame(self.jobs_data)
+            jobs_df = jobs_df.drop_duplicates(subset=['company', 'role', 'location']).reset_index(drop=True)
+            
+            # Rename columns to match README format
+            jobs_df = jobs_df.rename(columns={
+                'company': 'Company',
+                'role': 'Role',
+                'work_mode': 'Work Mode',
+                'location': 'Location',
+                'link': 'Link to Application',
+                'last_updated': 'Last Updated'
+            })
+            
+            # Reorder columns
+            column_order = ['Company', 'Role', 'Work Mode', 'Location', 'Link to Application', 'Last Updated']
+            jobs_df = jobs_df[column_order]
         else:
-            logger.info("No new full-time jobs to add")
+            jobs_df = pd.DataFrame(columns=['Company', 'Role', 'Work Mode', 'Location', 'Link to Application', 'Last Updated'])
         
-        # Check if we have new internship data
         if self.internships_data:
-            # Update the internships section - note the ## instead of ###
-            internships_pattern = r'## 🚀 Internships\s+\|.*?\|\s+(?:\|.*?\|\s+)*?(?=\n##|\Z)'
-            new_internships_section = f'## 🚀 Internships\n\n{internships_md}\n'
+            # Add current date to all entries
+            for job in self.internships_data:
+                job['last_updated'] = current_date
             
-            if re.search(internships_pattern, readme_content, flags=re.DOTALL):
-                readme_content = re.sub(internships_pattern, new_internships_section, readme_content, flags=re.DOTALL)
-            else:
-                logger.warning("Could not find internships section in README")
+            internships_df = pd.DataFrame(self.internships_data)
+            internships_df = internships_df.drop_duplicates(subset=['company', 'role', 'location']).reset_index(drop=True)
+            
+            # Rename columns to match README format
+            internships_df = internships_df.rename(columns={
+                'company': 'Company',
+                'role': 'Role',
+                'work_mode': 'Work Mode',
+                'location': 'Location',
+                'link': 'Link to Application',
+                'last_updated': 'Last Updated'
+            })
+            
+            # Add duration column for internships if not present
+            if 'Duration' not in internships_df.columns:
+                # Try to extract duration from role name or set to default
+                internships_df['Duration'] = internships_df['Role'].apply(
+                    lambda x: 'Summer 2024' if any(term in x.lower() for term in ['summer', 'season']) else 'Ongoing'
+                )
+            
+            # Reorder columns
+            column_order = ['Company', 'Role', 'Work Mode', 'Location', 'Link to Application', 'Last Updated', 'Duration']
+            internships_df = internships_df[column_order]
         else:
-            logger.info("No new internships to add")
+            internships_df = pd.DataFrame(columns=['Company', 'Role', 'Work Mode', 'Location', 'Link to Application', 'Last Updated', 'Duration'])
         
-        # If we have no data at all, don't update the README
-        if not self.jobs_data and not self.internships_data:
-            logger.warning("No jobs or internships found. Skipping README update.")
-            return {"status": "skipped", "reason": "No data found"}
+        # Format work_mode column with backticks
+        jobs_df['Work Mode'] = jobs_df['Work Mode'].apply(lambda x: f"`{x}`")
+        internships_df['Work Mode'] = internships_df['Work Mode'].apply(lambda x: f"`{x}`")
         
-        # Add update timestamp
-        update_time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        if "Last Updated:" in readme_content:
-            readme_content = re.sub(r'Last Updated:.*', f'Last Updated: {update_time}', readme_content)
-        else:
-            readme_content = readme_content.replace("# Software Engineer Job Openings in Europe", 
-                                                   f"# Software Engineer Job Openings in Europe\n\nLast Updated: {update_time}")
+        # Format link column to make it clickable in Markdown
+        jobs_df['Link to Application'] = jobs_df['Link to Application'].apply(lambda x: f"[Apply]({x})")
+        internships_df['Link to Application'] = internships_df['Link to Application'].apply(lambda x: f"[Apply]({x})")
         
-        # Update the README in the repository
-        repo.update_file(
-            "README.md",
-            f"Update job listings - {update_time}",
-            readme_content,
-            repo.get_contents("README.md").sha
-        )
+        # Format for markdown
+        jobs_md = jobs_df.to_markdown(index=False) if not jobs_df.empty else "| No full-time jobs found |"
+        internships_md = internships_df.to_markdown(index=False) if not internships_df.empty else "| No internships found |"
         
-        logger.info(f"Successfully updated GitHub README at {update_time}")
-        
-        # Generate a detailed report
-        report = {
-            "status": "success",
-            "update_time": update_time,
-            "total_full_time_jobs": len(self.jobs_data),
-            "total_internships": len(self.internships_data),
-            "sources": {
-                "LinkedIn": len([j for j in self.jobs_data + self.internships_data if j["source"] == "LinkedIn"]),
-                "Indeed": len([j for j in self.jobs_data + self.internships_data if j["source"] == "Indeed"]),
-                "Glassdoor": len([j for j in self.jobs_data + self.internships_data if j["source"] == "Glassdoor"])
-            }
-        }
-        
-        return report
-        
-    except Exception as e:
-        logger.error(f"Error updating GitHub repository: {str(e)}")
-        return {"status": "error", "message": str(e)}
+        return jobs_md, internships_md
     
+    def update_github_readme(self):
+        """Update the GitHub repository README with the new job data"""
+        try:
+            # Format the job data
+            jobs_md, internships_md = self.format_markdown_tables()
+            
+            # Connect to GitHub
+            g = Github(self.github_token)
+            repo = g.get_repo("izzatkarimov/swe-positions-europe")
+            
+            # Get the existing README content
+            readme_content = repo.get_contents("README.md").decoded_content.decode('utf-8')
+            
+            # Check if we have new data to add
+            if self.jobs_data:
+                # Update the full-time jobs section - note the ## instead of ###
+                jobs_pattern = r'## 💼 Full-Time Jobs\s+\|.*?\|\s+(?:\|.*?\|\s+)*?(?=\n##|\Z)'
+                new_jobs_section = f'## 💼 Full-Time Jobs\n\n{jobs_md}\n'
+                
+                if re.search(jobs_pattern, readme_content, flags=re.DOTALL):
+                    readme_content = re.sub(jobs_pattern, new_jobs_section, readme_content, flags=re.DOTALL)
+                else:
+                    logger.warning("Could not find full-time jobs section in README")
+            else:
+                logger.info("No new full-time jobs to add")
+            
+            # Check if we have new internship data
+            if self.internships_data:
+                # Update the internships section - note the ## instead of ###
+                internships_pattern = r'## 🚀 Internships\s+\|.*?\|\s+(?:\|.*?\|\s+)*?(?=\n##|\Z)'
+                new_internships_section = f'## 🚀 Internships\n\n{internships_md}\n'
+                
+                if re.search(internships_pattern, readme_content, flags=re.DOTALL):
+                    readme_content = re.sub(internships_pattern, new_internships_section, readme_content, flags=re.DOTALL)
+                else:
+                    logger.warning("Could not find internships section in README")
+            else:
+                logger.info("No new internships to add")
+            
+            # If we have no data at all, don't update the README
+            if not self.jobs_data and not self.internships_data:
+                logger.warning("No jobs or internships found. Skipping README update.")
+                return {"status": "skipped", "reason": "No data found"}
+            
+            # Add update timestamp
+            update_time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            if "Last Updated:" in readme_content:
+                readme_content = re.sub(r'Last Updated:.*', f'Last Updated: {update_time}', readme_content)
+            else:
+                readme_content = readme_content.replace("# Software Engineer Job Openings in Europe", 
+                                                       f"# Software Engineer Job Openings in Europe\n\nLast Updated: {update_time}")
+            
+            # Update the README in the repository
+            repo.update_file(
+                "README.md",
+                f"Update job listings - {update_time}",
+                readme_content,
+                repo.get_contents("README.md").sha
+            )
+            
+            logger.info(f"Successfully updated GitHub README at {update_time}")
+            
+            # Generate a detailed report
+            report = {
+                "status": "success",
+                "update_time": update_time,
+                "total_full_time_jobs": len(self.jobs_data),
+                "total_internships": len(self.internships_data),
+                "sources": {
+                    "LinkedIn": len([j for j in self.jobs_data + self.internships_data if j["source"] == "LinkedIn"]),
+                    "Indeed": len([j for j in self.jobs_data + self.internships_data if j["source"] == "Indeed"]),
+                    "Glassdoor": len([j for j in self.jobs_data + self.internships_data if j["source"] == "Glassdoor"])
+                }
+            }
+            
+            return report
+            
+        except Exception as e:
+            logger.error(f"Error updating GitHub repository: {str(e)}")
+            return {"status": "error", "message": str(e)}
+        
     def close(self):
         """Close the Selenium driver"""
         if hasattr(self, 'driver'):

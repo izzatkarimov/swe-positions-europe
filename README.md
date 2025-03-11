@@ -1,6 +1,6 @@
 # Software Engineer Job Openings in Europe 🇪🇺
 
-![Banner Image](https://github.com/izzatkarimov/EU-Swe-Jobs/assets/108251704/0db6fd40-20d3-4a4f-9c17-2306dd33ae16)
+![Banner Image](https://github.com/izzatkarimov/swe-positions-europe/assets/108251704/0db6fd40-20d3-4a4f-9c17-2306dd33ae16)
 
 Welcome to the comprehensive repository of software engineering job opportunities across Europe. This curated list includes both full-time positions and internships, regularly updated to ensure you have access to the latest opportunities in the tech industry.
 

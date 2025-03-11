@@ -104,7 +104,7 @@ class JobArchiver:
         try:
             # Connect to GitHub
             g = Github(self.github_token)
-            repo = g.get_repo("izzatkarimov/EU-Swe-Jobs")
+            repo = g.get_repo("izzatkarimov/swe-positions-europe")
             
             # Get the existing README content
             readme_file = repo.get_contents("README.md")
